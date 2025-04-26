@@ -1,5 +1,6 @@
 # Email Reply Parser for Python
 A port of GitHub's Email Reply Parser library, by the fine folks at [Zapier](https://zapier.com/).
+Original port seems abandoned since 2020, this is an attemt to maintain it.
 
 ## Summary
 
