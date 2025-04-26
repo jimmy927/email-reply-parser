@@ -39,7 +39,7 @@ class EmailMessage(object):
     SIG_REGEX = re.compile(r'(--|__|-\w)|(^Sent from my (\w+\s*){1,3})')
     QUOTE_HDR_REGEX = re.compile('On.*wrote:$')
     QUOTED_REGEX = re.compile(r'(>+)')
-    HEADER_REGEX = re.compile(r'^\*?(From|Sent|To|Subject):\*? .+')
+    HEADER_REGEX = re.compile(r'^\*?(From|Sent|To|Subject|Från|Datum|Till|Ämne):\*? .+')
     _MULTI_QUOTE_HDR_REGEX = r'(?!On.*On\s.+?wrote:)(On\s(.+?)wrote:)'
     MULTI_QUOTE_HDR_REGEX = re.compile(_MULTI_QUOTE_HDR_REGEX, re.DOTALL | re.MULTILINE)
     MULTI_QUOTE_HDR_REGEX_MULTILINE = re.compile(_MULTI_QUOTE_HDR_REGEX, re.DOTALL)
@@ -169,4 +169,7 @@ class Fragment(object):
 
     @property
     def content(self):
-        return self._content.strip()
+        # Replace multiple consecutive blank lines with a single line break
+        content = self._content.strip()
+        content = re.sub(r'\n\s*\n', '\n\n', content)
+        return content
