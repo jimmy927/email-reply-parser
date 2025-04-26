@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "email-reply-parser-jimmy927"
-version = "0.6.1"
+version = "0.6.2"
 description = "Email reply parser"
 readme = "README.md"
 authors = [
