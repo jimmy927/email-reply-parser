@@ -123,30 +123,30 @@ class EmailMessageTest(unittest.TestCase):
         self.assertTrue("You can list the keys for the bucket" in message.reply)
 
     def test_reply_from_gmail(self):
-        with open('test/emails/email_gmail.txt') as f:
+        with open('test/emails/email_gmail.txt', encoding='utf-8') as f:
             self.assertEqual('This is a test for inbox replying to a github message.',
                              EmailReplyParser.parse_reply(f.read()))
 
     def test_parse_out_just_top_for_outlook_reply(self):
-        with open('test/emails/email_2_1.txt') as f:
+        with open('test/emails/email_2_1.txt', encoding='utf-8') as f:
             self.assertEqual("Outlook with a reply", EmailReplyParser.parse_reply(f.read()))
 
     def test_parse_out_just_top_for_outlook_with_reply_directly_above_line(self):
-        with open('test/emails/email_2_2.txt') as f:
+        with open('test/emails/email_2_2.txt', encoding='utf-8') as f:
             self.assertEqual("Outlook with a reply directly above line", EmailReplyParser.parse_reply(f.read()))
 
     def test_parse_out_just_top_for_outlook_with_unusual_headers_format(self):
-        with open('test/emails/email_2_3.txt') as f:
+        with open('test/emails/email_2_3.txt', encoding='utf-8') as f:
             self.assertEqual(
                 "Outlook with a reply above headers using unusual format",
                 EmailReplyParser.parse_reply(f.read()))
 
     def test_sent_from_iphone(self):
-        with open('test/emails/email_iPhone.txt') as email:
+        with open('test/emails/email_iPhone.txt', encoding='utf-8') as email:
             self.assertTrue("Sent from my iPhone" not in EmailReplyParser.parse_reply(email.read()))
 
     def test_email_one_is_not_on(self):
-        with open('test/emails/email_one_is_not_on.txt') as email:
+        with open('test/emails/email_one_is_not_on.txt', encoding='utf-8') as email:
             self.assertTrue(
                 "On Oct 1, 2012, at 11:55 PM, Dave Tapley wrote:" not in EmailReplyParser.parse_reply(email.read()))
 
@@ -189,10 +189,20 @@ class EmailMessageTest(unittest.TestCase):
         message = self.get_email('email_sig_delimiter_in_middle_of_line')
         self.assertEqual(1, len(message.fragments))
 
+    def test_swedish_headers_email(self):
+        """Test parsing emails with Swedish headers (Från, Datum, Till, Ämne)"""
+        message = self.get_email('email_swedish_1')
+        self.assertEqual("Hi,\n\nThat's sounds great! Have a nice evening!\n\nAnna", message.reply)
+
+    def test_swedish_quote_pattern(self):
+        """Test parsing emails with Swedish quote patterns like 'Den ... skrev:'"""
+        message = self.get_email('email_swedish_2')
+        self.assertEqual("Hello Anna,\n\nIt's amazing I would love to ofcourse to be in such large scale project but\nunfortunately I have a contract till end of the year .. lets keep in touch and\nwill update you once I am available\n\n/John", message.reply)
+
     def get_email(self, name):
         """ Return EmailMessage instance
         """
-        with open('test/emails/%s.txt' % name) as f:
+        with open('test/emails/%s.txt' % name, encoding='utf-8') as f:
             text = f.read()
         return EmailReplyParser.read(text)
 

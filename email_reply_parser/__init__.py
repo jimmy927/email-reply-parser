@@ -37,7 +37,7 @@ class EmailMessage(object):
     """
 
     SIG_REGEX = re.compile(r'(--|__|-\w)|(^Sent from my (\w+\s*){1,3})')
-    QUOTE_HDR_REGEX = re.compile('On.*wrote:$')
+    QUOTE_HDR_REGEX = re.compile(r'On.*wrote:$')
     QUOTED_REGEX = re.compile(r'(>+)')
     HEADER_REGEX = re.compile(r'^\*?(From|Sent|To|Subject|Från|Datum|Till|Ämne):\*? .+')
     _MULTI_QUOTE_HDR_REGEX = r'(?!On.*On\s.+?wrote:)(On\s(.+?)wrote:)'
@@ -58,6 +58,12 @@ class EmailMessage(object):
         """
 
         self.found_visible = False
+
+        # Handle Swedish/Nordic style quote headers (Den ... skrev:)
+        den_wrote_match = re.search(r'Den .+?skrev:', self.text, re.DOTALL)
+        if den_wrote_match and den_wrote_match.start() > 0:
+            # Only apply this if it appears after the actual message content
+            self.text = self.text[:den_wrote_match.start()].rstrip()
 
         is_multi_quote_header = self.MULTI_QUOTE_HDR_REGEX_MULTILINE.search(self.text)
         if is_multi_quote_header:
@@ -111,6 +117,10 @@ class EmailMessage(object):
         else:
             self._finish_fragment()
             self.fragment = Fragment(is_quoted, line, headers=is_header)
+            
+            # If this is a quote header, mark it as quoted
+            if is_quote_header:
+                self.fragment.quoted = True
 
     def quote_header(self, line):
         """ Determines whether line is part of a quoted area
