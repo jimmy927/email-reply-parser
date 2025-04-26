@@ -1,7 +1,7 @@
 # Email Reply Parser for Python
 A port of GitHub's Email Reply Parser library, by the fine folks at [Zapier](https://zapier.com/).
 
-Original port seems abandoned since 2020, this is an attemt to maintain it.
+Original port seems abandoned since 2020, this is an attempt to maintain it.
 
 [![Python Tests](https://github.com/jimmy927/email-reply-parser/actions/workflows/pytest.yml/badge.svg)](https://github.com/jimmy927/email-reply-parser/actions/workflows/pytest.yml)
 
@@ -20,7 +20,7 @@ On Fri, Nov 16, 2012 at 1:48 PM, Zapier <contact@zapier.com> wrote:
 > "Hi Royce, can we chat in the morning about your question?"
 ```
 
-Email clients handle reply formatting differently, making parsing a pain. [We include tests for many cases](https://github.com/zapier/email-reply-parser/tree/master/test/emails). The parsed email:
+Email clients handle reply formatting differently, making parsing a pain. [We include tests for many cases](https://github.com/jimmy927/email-reply-parser/tree/master/test/emails). The parsed email:
 
 ```
 Yes that is fine, I will email you in the morning.
@@ -28,10 +28,16 @@ Yes that is fine, I will email you in the morning.
 
 ## Installation
 
-Using pip, use command:
+Using pip, install directly from PyPI:
 
 ```
-pip install email_reply_parser
+pip install email-reply-parser-jimmy927
+```
+
+Or install the latest version from GitHub:
+
+```
+pip install git+https://github.com/jimmy927/email-reply-parser.git
 ```
 
 ## Tutorial

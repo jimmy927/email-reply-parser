@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "email-reply-parser-jimmy927"
+version = "0.6.0"
+description = "Email reply parser"
+readme = "README.md"
+authors = [
+    {name = "Jimmy Engelbrecht", email = "jimmy@plero.se"},
+]
+license = {text = "MIT"}
+classifiers = [
+    "Topic :: Software Development",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+"Homepage" = "https://github.com/jimmy927/email-reply-parser"
+"Bug Tracker" = "https://github.com/jimmy927/email-reply-parser/issues" 
