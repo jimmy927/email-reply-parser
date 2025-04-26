@@ -4,6 +4,7 @@ A port of GitHub's Email Reply Parser library, by the fine folks at [Zapier](htt
 Original port seems abandoned since 2020, this is an attempt to maintain it.
 
 [![Python Tests](https://github.com/jimmy927/email-reply-parser/actions/workflows/pytest.yml/badge.svg)](https://github.com/jimmy927/email-reply-parser/actions/workflows/pytest.yml)
+[![PyPI version](https://badge.fury.io/py/email-reply-parser-jimmy927.svg)](https://badge.fury.io/py/email-reply-parser-jimmy927)
 
 ## Summary
 
