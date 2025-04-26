@@ -3,8 +3,8 @@ A port of GitHub's Email Reply Parser library, by the fine folks at [Zapier](htt
 
 Original port seems abandoned since 2020, this is an attemt to maintain it.
 
-[![Python Tests](https://github.com/yourusername/email-reply-parser/actions/workflows/pytest.yml/badge.svg)](https://github.com/yourusername/email-reply-parser/actions/workflows/pytest.yml)
-[![codecov](https://codecov.io/gh/yourusername/email-reply-parser/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/email-reply-parser)
+[![Python Tests](https://github.com/jimmy927/email-reply-parser/actions/workflows/pytest.yml/badge.svg)](https://github.com/jimmy927/email-reply-parser/actions/workflows/pytest.yml)
+[![codecov](https://codecov.io/gh/jimmy927/email-reply-parser/branch/main/graph/badge.svg)](https://codecov.io/gh/jimmy927/email-reply-parser)
 
 ## Summary
 
